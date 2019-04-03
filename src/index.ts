@@ -8,7 +8,7 @@ import {fromPromise} from "rxjs/internal-compatibility";
 import {catchError} from "rxjs/operators";
 import {of} from "rxjs/internal/observable/of";
 
-export class HttpClient implements IHttp {
+export class RxJSHttpClient implements IHttp {
 
     public get(url: string, config: HttpRequestConfig = {}): Observable<any> {
         const requestConfig: HttpRequestConfig = HttpConfigFactory.getHttpGetConfigFor(config);
