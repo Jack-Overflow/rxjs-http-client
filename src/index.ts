@@ -39,4 +39,26 @@ export class RxJSHttpClient implements IHttp {
                 .then((res) => res.json()))
             .pipe(catchError((error) => of(error)));
     }
+
+    public patch(url: string, config: HttpRequestConfig = {}): Observable<any> {
+        const requestConfig: HttpRequestConfig = HttpConfigFactory.getHttpPatchConfigFor(config);
+        const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(requestConfig);
+
+        return fromPromise(
+            fetch(url, configObject)
+                .then((res) => res.json())
+        )
+            .pipe(catchError((error) => of(error)))
+    }
+
+    public delete(url: string, config: HttpRequestConfig = {}): Observable<any> {
+        const requestConfig: HttpRequestConfig = HttpConfigFactory.getHttpDeleteConfigFor(config);
+        const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(requestConfig);
+
+        return fromPromise(
+            fetch(url, configObject)
+                .then((res) => res.json())
+        )
+            .pipe(catchError((error) => of(error)))
+    }
 }

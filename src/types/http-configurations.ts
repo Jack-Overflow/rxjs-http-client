@@ -37,5 +37,29 @@ export class HttpConfigurations {
             cache: 'no-cache',
             requestObject: {},
         },
+        PATCH: {
+            method: 'PATCH',
+            referrer: 'no-referrer',
+            redirect: 'follow',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'same-origin',
+            mode: 'cors',
+            cache: 'no-cache',
+            requestObject: {}
+        },
+        DELETE: {
+            method: 'DELETE',
+            referrer: 'no-referrer',
+            redirect: 'follow',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            credentials: 'same-origin',
+            mode: 'cors',
+            cache: 'no-cache',
+            requestObject: {}
+        }
     };
 }
