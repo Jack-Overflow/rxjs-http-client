@@ -1,3 +1,8 @@
+<h1>Changes!</h1>
+Working on getting this working as an NPM package. This was just a 
+trail to see how easy it was to create a package but I'm now dedicated to getting this 
+Working.
+
 <h1>RxJS-Http-Client</h1>
 
 <p>A simple to use http client built on ES6 fetch and RxJS</p>
