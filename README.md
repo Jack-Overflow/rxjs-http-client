@@ -1,7 +1,6 @@
 <h1>Changes!</h1>
-Working on getting this working as an NPM package. This was just a 
-trail to see how easy it was to create a package but I'm now dedicated to getting this 
-Working.
+This now works as an NPM package... I apologise for anyone who's 
+downloaded this and found that it just didn't work. This has been rectified.
 
 <h1>RxJS-Http-Client</h1>
 
