@@ -1,1 +1,0 @@
-{"version":3,"file":"http-configurations.d.ts","sourceRoot":"","sources":["../../src/types/http-configurations.ts"],"names":[],"mappings":"AAAA,OAAO,EAAC,iBAAiB,EAAC,MAAM,6BAA6B,CAAC;AAE9D,qBAAa,kBAAkB;IAC3B,OAAc,4BAA4B,EAAE;QAAC,CAAC,UAAU,EAAE,MAAM,GAAG,iBAAiB,CAAA;KAAC,CA4DnF;CACL"}

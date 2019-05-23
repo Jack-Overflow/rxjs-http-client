@@ -15,7 +15,7 @@
     "module": "es2015",
     "baseUrl": "./",
     "typeRoots": [
-      "dist/index.d.ts"
+      "index.d.ts"
     ]
   }
 }
