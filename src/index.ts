@@ -2,78 +2,50 @@ import {RxjsHttpRequestConfig} from "./types/http-request-config.class";
 import {IHttp} from "./types/http.interface";
 import {HttpRequestMapper} from "./mappers/http-request.mapper";
 
-import {Observable} from "rxjs";
+import {Observable, throwError} from "rxjs";
 import {HttpRequestConfigurationsEnum} from "./types/http-configurations.enum";
+import {fromPromise} from "rxjs/internal-compatibility";
+import {catchError} from "rxjs/operators";
 
 export class RxJSHttpClient implements IHttp {
 
-    public get(url: string, config: Partial<RxjsHttpRequestConfig> = {}): Observable<Response> {
+    public get(url: string, config: Partial<RxjsHttpRequestConfig> = {}): Observable<any> {
         const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.GET);
 
-        return new Observable((observable) => {
-            fetch(url, configObject)
-                .then((res: Response) => {
-                    observable.next(res)
-                })
-                .catch((err) => {
-                    observable.error(err)
-                })
-            })
+        return fromPromise(fetch(url, configObject)
+            .then((res: Response) => res.json()))
+            .pipe(catchError((err) => throwError(err)))
     }
 
-    public post(url: string, config: RxjsHttpRequestConfig = {}): Observable<Response> {
+    public post(url: string, config: RxjsHttpRequestConfig = {}): Observable<any> {
         const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.POST);
 
-        return new Observable((observable) => {
-            fetch(url, configObject)
-                .then((response: Response) => {
-                    observable.next(response);
-                })
-                .catch((err) => {
-                    observable.error(err)
-                })
-        })
+        return fromPromise(fetch(url, configObject)
+            .then((res: Response) => res.json()))
+            .pipe(catchError((err) => throwError(err)))
     }
 
-    public put(url: string, config: RxjsHttpRequestConfig = {}): Observable<Response> {
+    public put(url: string, config: RxjsHttpRequestConfig = {}): Observable<any> {
         const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.PUT);
 
-        return new Observable((observable) => {
-            fetch(url, configObject)
-                .then((response: Response) => {
-                    observable.next(response)
-                })
-                .catch((error) => {
-                    observable.error(error)
-                })
-        })
+        return fromPromise(fetch(url, configObject)
+            .then((res: Response) => res.json()))
+            .pipe(catchError((err) => throwError(err)))
     }
 
-    public patch(url: string, config: RxjsHttpRequestConfig = {}): Observable<Response> {
+    public patch(url: string, config: RxjsHttpRequestConfig = {}): Observable<any> {
         const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.PATCH);
 
-        return new Observable((observable) => {
-            fetch(url, configObject)
-                .then((response: Response) => {
-                    observable.next(response)
-                })
-                .catch((error) => {
-                    observable.error(error)
-                })
-        })
+        return fromPromise(fetch(url, configObject)
+            .then((res: Response) => res.json()))
+            .pipe(catchError((err) => throwError(err)))
     }
 
-    public delete(url: string, config: RxjsHttpRequestConfig = {}): Observable<Response> {
+    public delete(url: string, config: RxjsHttpRequestConfig = {}): Observable<any> {
         const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.DELETE);
 
-        return new Observable((observable) => {
-            fetch(url, configObject)
-                .then((response: Response) => {
-                    observable.next(response)
-                })
-                .catch((error) => {
-                    observable.error(error)
-                })
-        })
+        return fromPromise(fetch(url, configObject)
+            .then((res: Response) => res.json()))
+            .pipe(catchError((err) => throwError(err)))
     }
 }

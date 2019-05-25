@@ -12,7 +12,7 @@ export class HttpRequestMapper {
             credentials: httpRequestConfig.credentials ? httpRequestConfig.credentials : defaultConfig.credentials,
             headers: {
                 ...defaultConfig.headers,
-                ...httpRequestConfig.headers ? httpRequestConfig : undefined
+                ...httpRequestConfig.headers ? httpRequestConfig.headers : undefined
             } as HeadersInit,
             redirect: httpRequestConfig.redirect ? httpRequestConfig.redirect : defaultConfig.redirect,
             referrer: httpRequestConfig.referrer ? httpRequestConfig.referrer  : defaultConfig.referrer,
