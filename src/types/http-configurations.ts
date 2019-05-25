@@ -1,7 +1,7 @@
-import {HttpRequestConfig} from './http-request-config.class';
+import {RxjsHttpRequestConfig} from './http-request-config.class';
 
 export class HttpConfigurations {
-    public static httpConfigurationsDictionary: {[configName: string]: HttpRequestConfig} = {
+    public static httpConfigurationsDictionary: {[configName: string]: RxjsHttpRequestConfig} = {
         POST: {
             method: 'POST',
             referrer: 'no-referrer',

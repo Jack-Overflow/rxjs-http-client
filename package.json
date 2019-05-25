@@ -2,7 +2,8 @@
   "name": "rxjs-http-client",
   "version": "1.0.14",
   "description": "",
-  "main": "index.js",
+  "main": "./dist/index",
+  "types": "./dist/index",
   "scripts": {
     "build": "webpack --config webpack.config.js --mode=production",
     "test": "jest"

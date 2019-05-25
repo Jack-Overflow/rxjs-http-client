@@ -1,10 +1,10 @@
-export abstract class HttpRequestConfig {
+export abstract class RxjsHttpRequestConfig {
     public method?: string;
-    public mode?: string;
-    public cache?: string;
-    public credentials?: string;
+    public mode?: RequestMode;
+    public cache?: RequestCache;
+    public credentials?: RequestCredentials;
     public headers?: {[headerName: string]: string};
-    public redirect?: string;
+    public redirect?: RequestRedirect;
     public referrer?: string;
     public requestObject?: object;
 }

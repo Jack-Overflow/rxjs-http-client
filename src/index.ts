@@ -1,64 +1,79 @@
-import {HttpRequestConfig} from "./types/http-request-config.class";
+import {RxjsHttpRequestConfig} from "./types/http-request-config.class";
 import {IHttp} from "./types/http.interface";
-import {HttpConfigFactory} from "./factories/http-config.factory";
 import {HttpRequestMapper} from "./mappers/http-request.mapper";
 
 import {Observable} from "rxjs";
-import {fromPromise} from "rxjs/internal-compatibility";
-import {catchError} from "rxjs/operators";
-import {of} from "rxjs/internal/observable/of";
+import {HttpRequestConfigurationsEnum} from "./types/http-configurations.enum";
 
 export class RxJSHttpClient implements IHttp {
 
-    public get(url: string, config: HttpRequestConfig = {}): Observable<any> {
-        const requestConfig: HttpRequestConfig = HttpConfigFactory.getHttpGetConfigFor(config);
-        const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(requestConfig);
+    public get(url: string, config: Partial<RxjsHttpRequestConfig> = {}): Observable<Response> {
+        const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.GET);
 
-        return fromPromise(
+        return new Observable((observable) => {
             fetch(url, configObject)
-                .then((res) => res.json()))
-            .pipe(catchError((error) => of(error)));
+                .then((res: Response) => {
+                    observable.next(res)
+                })
+                .catch((err) => {
+                    observable.error(err)
+                })
+            })
     }
 
-    public post(url: string, config: HttpRequestConfig = {}): Observable<any> {
-        const requestConfig: HttpRequestConfig = HttpConfigFactory.getHttpPostConfigFor(config);
-        const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(requestConfig);
+    public post(url: string, config: RxjsHttpRequestConfig = {}): Observable<Response> {
+        const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.POST);
 
-        return fromPromise(
+        return new Observable((observable) => {
             fetch(url, configObject)
-                .then((res) => res.json()))
-            .pipe(catchError((error) => of(error)));
+                .then((response: Response) => {
+                    observable.next(response);
+                })
+                .catch((err) => {
+                    observable.error(err)
+                })
+        })
     }
 
-    public put(url: string, config: HttpRequestConfig = {}): Observable<any> {
-        const requestConfig: HttpRequestConfig = HttpConfigFactory.getHttpPutConfigFor(config);
-        const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(requestConfig);
+    public put(url: string, config: RxjsHttpRequestConfig = {}): Observable<Response> {
+        const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.PUT);
 
-        return fromPromise(
+        return new Observable((observable) => {
             fetch(url, configObject)
-                .then((res) => res.json()))
-            .pipe(catchError((error) => of(error)));
+                .then((response: Response) => {
+                    observable.next(response)
+                })
+                .catch((error) => {
+                    observable.error(error)
+                })
+        })
     }
 
-    public patch(url: string, config: HttpRequestConfig = {}): Observable<any> {
-        const requestConfig: HttpRequestConfig = HttpConfigFactory.getHttpPatchConfigFor(config);
-        const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(requestConfig);
+    public patch(url: string, config: RxjsHttpRequestConfig = {}): Observable<Response> {
+        const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.PATCH);
 
-        return fromPromise(
+        return new Observable((observable) => {
             fetch(url, configObject)
-                .then((res) => res.json())
-        )
-            .pipe(catchError((error) => of(error)))
+                .then((response: Response) => {
+                    observable.next(response)
+                })
+                .catch((error) => {
+                    observable.error(error)
+                })
+        })
     }
 
-    public delete(url: string, config: HttpRequestConfig = {}): Observable<any> {
-        const requestConfig: HttpRequestConfig = HttpConfigFactory.getHttpDeleteConfigFor(config);
-        const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(requestConfig);
+    public delete(url: string, config: RxjsHttpRequestConfig = {}): Observable<Response> {
+        const configObject: RequestInit = HttpRequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.DELETE);
 
-        return fromPromise(
+        return new Observable((observable) => {
             fetch(url, configObject)
-                .then((res) => res.json())
-        )
-            .pipe(catchError((error) => of(error)))
+                .then((response: Response) => {
+                    observable.next(response)
+                })
+                .catch((error) => {
+                    observable.error(error)
+                })
+        })
     }
 }
