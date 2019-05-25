@@ -2,6 +2,12 @@
 This now works as an NPM package... I apologise for anyone who's 
 downloaded this and found that it just didn't work. This has been rectified.
 
+The client now returns everything that the original fetch library returned, rather than just the JSON returned from the request.
+
+Code has been reduced :) Less is more. 
+
+More work around using this library with a standard JS project
+
 <h1>RxJS-Http-Client</h1>
 
 <p>A simple to use http client built on ES6 fetch and RxJS</p>
@@ -30,7 +36,7 @@ npm i rxjs-http-client
                     map((responseItem: any) => // code)
                 )
                 .subscribe((response: any) => {
-                    console.log(response)
+                    console.log(response.json())
                 })
         }
     }

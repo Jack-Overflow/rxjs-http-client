@@ -12,10 +12,7 @@
       "es2017",
       "dom"
     ],
-    "types": [
-      "rxjs"
-    ],
-    "baseUrl": "./",
+    "baseUrl": "./dist",
     "typeRoots": [
       "index.d.ts"
     ]
