@@ -9,7 +9,7 @@ import {catchError} from 'rxjs/operators';
 
 export class RxJSHttpClient implements IHttp {
 
-    public get(url: string, config: Partial<RxjsHttpRequestConfig>): Observable<any> {
+    public get(url: string, config: Partial<RxjsHttpRequestConfig> = {}): Observable<any> {
         const configObject: RequestInit = RequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.GET);
 
         return fromPromise(fetch(url, configObject)

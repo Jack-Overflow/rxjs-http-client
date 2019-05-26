@@ -12,7 +12,7 @@ export class HttpConfigurations {
             credentials: 'same-origin',
             mode: 'cors',
             cache: 'no-cache',
-            requestObject: {},
+            requestBody: {},
         },
         GET: {
             method: 'GET',
@@ -35,7 +35,7 @@ export class HttpConfigurations {
             credentials: 'same-origin',
             mode: 'cors',
             cache: 'no-cache',
-            requestObject: {},
+            requestBody: {},
         },
         PATCH: {
             method: 'PATCH',
@@ -47,7 +47,7 @@ export class HttpConfigurations {
             credentials: 'same-origin',
             mode: 'cors',
             cache: 'no-cache',
-            requestObject: {},
+            requestBody: {},
         },
         DELETE: {
             method: 'DELETE',
@@ -59,7 +59,7 @@ export class HttpConfigurations {
             credentials: 'same-origin',
             mode: 'cors',
             cache: 'no-cache',
-            requestObject: {},
+            requestBody: {},
         },
     };
 }

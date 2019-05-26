@@ -17,7 +17,7 @@ export class RequestMapper {
             redirect: defaultConfig.redirect,
             referrer: defaultConfig.referrer,
             method: defaultConfig.method,
-            body: defaultConfig.requestObject,
+            body: defaultConfig.requestBody,
             ...httpRequestConfig,
         };
     }
