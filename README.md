@@ -14,7 +14,8 @@ More work around using this library with a standard JS project
 A simple to use http client built on ES6 fetch and RxJS
 
 ### Installing RxJS-Http-Client
-<p>You can use NPM or Yarn to install this package</p>
+
+You can use NPM or Yarn to install this package
 
 ```$xslt
 yarn add rxjs-http-client
