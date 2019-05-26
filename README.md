@@ -1,4 +1,7 @@
 <h1>Changes!</h1>
+
+Please update to 1.1.8 for latest stable version. 
+
 This now works as an NPM package... I apologise for anyone who's 
 downloaded this and found that it just didn't work. This has been rectified.
 
@@ -39,3 +42,6 @@ npm i rxjs-http-client
         }
     }
 ```
+
+<h1>Issues/Requests.</h1>
+I'd like to hear from anyone who finds any bugs/ feature request for this library, go to [The issues page](https://github.com/Dudecor3/rxjs-http-client/issues) 

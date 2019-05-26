@@ -1,7 +1,7 @@
 import {RxjsHttpRequestConfig} from './http-request-config.class';
 
 export class HttpConfigurations {
-    public static httpConfigurationsDictionary: {[configName: string]: RxjsHttpRequestConfig} = {
+    public static httpConfigurationsDictionary: {[configName: string]: Partial<RxjsHttpRequestConfig>} = {
         POST: {
             method: 'POST',
             referrer: 'no-referrer',
@@ -47,7 +47,7 @@ export class HttpConfigurations {
             credentials: 'same-origin',
             mode: 'cors',
             cache: 'no-cache',
-            requestObject: {}
+            requestObject: {},
         },
         DELETE: {
             method: 'DELETE',
@@ -59,7 +59,7 @@ export class HttpConfigurations {
             credentials: 'same-origin',
             mode: 'cors',
             cache: 'no-cache',
-            requestObject: {}
-        }
+            requestObject: {},
+        },
     };
 }

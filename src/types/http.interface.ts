@@ -1,6 +1,6 @@
-import {RxjsHttpRequestConfig} from "./http-request-config.class";
-import {Observable} from "rxjs";
-import {HttpRequestConfigurationsEnum} from "./http-configurations.enum";
+import {RxjsHttpRequestConfig} from './http-request-config.class';
+import {Observable} from "rxjs/internal/Observable";
+import {HttpRequestConfigurationsEnum} from './http-configurations.enum';
 
 export interface IHttp {
     get(url: HttpRequestConfigurationsEnum, config: RxjsHttpRequestConfig): Observable<any>;
