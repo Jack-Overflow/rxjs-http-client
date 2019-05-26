@@ -1,7 +1,7 @@
+import 'whatwg-fetch';
 import {RxjsHttpRequestConfig} from './types/http-request-config.class';
 import {IHttp} from './types/http.interface';
 import {RequestMapper} from './mappers/request.mapper';
-
 import {Observable, throwError} from 'rxjs';
 import {HttpRequestConfigurationsEnum} from './types/http-configurations.enum';
 import {fromPromise} from 'rxjs/internal-compatibility';
