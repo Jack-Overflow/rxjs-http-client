@@ -1,6 +1,6 @@
 # Changes!
 
-Please update to 1.1.12 for latest stable version. 
+Please update to 1.1.13 for latest stable version. 
 
 This now works as an NPM package... I apologise for anyone who's 
 downloaded this and found that it just didn't work. This has been rectified.
