@@ -1,7 +1,7 @@
 {
   "name": "rxjs-http-client",
-  "version": "1.1.9",
-  "description": "",
+  "version": "1.1.10",
+  "description": "A simple to use http client built on ES6 fetch and RxJS",
   "main": "./dist/index",
   "types": "./dist/index",
   "scripts": {
@@ -16,7 +16,11 @@
     "Fetch",
     "HTTP"
   ],
-  "author": "marc freeman <freeman.marc880@gmail.com>",
+  "author": "Marc Freeman <freeman.marc880@gmail.com>",
+  "contributors": [
+    "Marc Freeman <freeman.marc880@gmail.com>",
+    "Jack Baker <jack.baker.0299@gmail.com>"
+  ],
   "license": "ISC",
   "dependencies": {
     "lodash": "^4.17.1",
