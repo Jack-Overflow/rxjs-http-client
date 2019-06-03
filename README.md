@@ -1,6 +1,6 @@
 # Changes!
 
-Please update to 1.1.17 for latest stable version. 
+Please update to 1.1.18 for latest stable version. 
 
 This now works as an NPM package... I apologise for anyone who's 
 downloaded this and found that it just didn't work. This has been rectified.
@@ -28,7 +28,7 @@ Using rxjs-http-client is relatively simple, suppose you're making a get request
 
 ```typescript 
     export class SomeClass {
-        private _http: HttpClient;
+        private _http: RxJSHttpClient;
         
         constructor() {
             this._http = new RxJSHttpClient();
