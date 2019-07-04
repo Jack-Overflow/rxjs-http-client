@@ -1,13 +1,13 @@
 {
   "name": "rxjs-http-client",
-  "version": "1.1.18",
+  "version": "1.1.23",
   "description": "A simple to use http client built on ES6 fetch and RxJS",
   "main": "./dist/index",
   "types": "./dist/index",
   "scripts": {
     "build": "tsc && npm run copy",
     "copy": "copy \"./package.json\" \"./dist\" && copy \"./README.md\" \"./dist\"",
-    "deploy":  "npm run build && npm publish ./dist --access public",
+    "deploy": "npm run build && npm publish ./dist --access public",
     "test": "jest"
   },
   "typings": "./index.d.ts",
