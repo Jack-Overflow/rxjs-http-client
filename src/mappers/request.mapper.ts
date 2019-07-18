@@ -7,18 +7,14 @@ export class RequestMapper {
         const defaultConfig = HttpConfigurations.httpConfigurationsDictionary[configType];
 
         return {
-            cache: defaultConfig.cache,
-            mode: defaultConfig.mode,
-            credentials: defaultConfig.credentials,
-            headers: {
-                ...defaultConfig.headers,
-                ...httpRequestConfig.headers,
-            } as HeadersInit,
-            redirect: defaultConfig.redirect,
-            referrer: defaultConfig.referrer,
-            method: defaultConfig.method,
-            body: defaultConfig.requestBody,
-            ...httpRequestConfig,
+            cache: httpRequestConfig.cache || defaultConfig.cache,
+            mode: httpRequestConfig.mode || defaultConfig.mode,
+            credentials: httpRequestConfig.credentials || defaultConfig.credentials,
+            headers: httpRequestConfig.headers || defaultConfig.headers,
+            redirect: httpRequestConfig.redirect || defaultConfig.redirect,
+            referrer: httpRequestConfig.referrer || defaultConfig.referrer,
+            method: httpRequestConfig.method || defaultConfig.method,
+            body: httpRequestConfig.requestBody || defaultConfig.requestBody,
         };
     }
 }
