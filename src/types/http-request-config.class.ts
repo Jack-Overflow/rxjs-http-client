@@ -6,5 +6,5 @@ export abstract class RxjsHttpRequestConfig {
     public headers: {[headerName: string]: string};
     public redirect: RequestRedirect;
     public referrer: string;
-    public requestBody: any;
+    public body: any;
 }

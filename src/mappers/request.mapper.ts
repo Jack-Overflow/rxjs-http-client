@@ -14,7 +14,7 @@ export class RequestMapper {
             redirect: httpRequestConfig.redirect || defaultConfig.redirect,
             referrer: httpRequestConfig.referrer || defaultConfig.referrer,
             method: httpRequestConfig.method || defaultConfig.method,
-            body: httpRequestConfig.requestBody || defaultConfig.requestBody,
+            body: httpRequestConfig.body || defaultConfig.body,
         };
     }
 }
