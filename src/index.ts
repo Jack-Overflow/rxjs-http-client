@@ -11,19 +11,17 @@ export class RxJSHttpClient implements IHttp {
     public get(url: string, config: Partial<RxjsHttpRequestConfig> = {}): Observable<any> {
         const configObject: RequestInit = RequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.GET);
 
-        return fromPromise(fetch(url, configObject))
-            .pipe(
-                map((res) => res.json())
-            );
+        return fromPromise(fetch(url, configObject)
+            .then((res: Response) => res.json())
+        );
     }
 
     public post(url: string, config: Partial<RxjsHttpRequestConfig>): Observable<any> {
         const configObject: RequestInit = RequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.POST);
 
-        return fromPromise(fetch(url, configObject))
-            .pipe(
-                map((res) => res.json())
-            );
+        return fromPromise(fetch(url, configObject)
+            .then((res: Response) => res.json())
+        );
     }
 
     public put(url: string, config: Partial<RxjsHttpRequestConfig>): Observable<any> {
@@ -37,18 +35,16 @@ export class RxJSHttpClient implements IHttp {
     public patch(url: string, config: Partial<RxjsHttpRequestConfig>): Observable<any> {
         const configObject: RequestInit = RequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.PATCH);
 
-        return fromPromise(fetch(url, configObject))
-            .pipe(
-                map((res) => res.json())
-            );
+        return fromPromise(fetch(url, configObject)
+            .then((res: Response) => res.json())
+        );
     }
 
     public delete(url: string, config: Partial<RxjsHttpRequestConfig>): Observable<any> {
         const configObject: RequestInit = RequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.DELETE);
 
-        return fromPromise(fetch(url, configObject))
-            .pipe(
-                map((res) => res.json())
-            );
+        return fromPromise(fetch(url, configObject)
+            .then((res: Response) => res.json())
+        );
     }
 }
