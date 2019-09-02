@@ -2,10 +2,9 @@ import 'whatwg-fetch';
 import {RxjsHttpRequestConfig} from './types/http-request-config.class';
 import {IHttp} from './types/http.interface';
 import {RequestMapper} from './mappers/request.mapper';
-import {Observable, throwError} from 'rxjs';
+import {Observable} from 'rxjs';
 import {HttpRequestConfigurationsEnum} from './types/http-configurations.enum';
 import {fromPromise} from 'rxjs/internal-compatibility';
-import {catchError, map} from 'rxjs/operators';
 
 export class RxJSHttpClient implements IHttp {
 
@@ -31,8 +30,8 @@ export class RxJSHttpClient implements IHttp {
         const configObject: RequestInit = RequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.PUT);
 
         return fromPromise(fetch(url, configObject)
-            .then((res: Response) => res.json()))
-            .pipe(catchError((err) => throwError(err)));
+            .then((res: Response) => res.json())
+        );
     }
 
     public patch(url: string, config: Partial<RxjsHttpRequestConfig>): Observable<any> {
