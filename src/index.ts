@@ -5,24 +5,26 @@ import {RequestMapper} from './mappers/request.mapper';
 import {Observable, throwError} from 'rxjs';
 import {HttpRequestConfigurationsEnum} from './types/http-configurations.enum';
 import {fromPromise} from 'rxjs/internal-compatibility';
-import {catchError} from 'rxjs/operators';
+import {catchError, map} from 'rxjs/operators';
 
 export class RxJSHttpClient implements IHttp {
 
     public get(url: string, config: Partial<RxjsHttpRequestConfig> = {}): Observable<any> {
         const configObject: RequestInit = RequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.GET);
 
-        return fromPromise(fetch(url, configObject)
-            .then((res: Response) => res.json()))
-            .pipe(catchError((err) => throwError(err)));
+        return fromPromise(fetch(url, configObject))
+            .pipe(
+                map((res) => res.json())
+            );
     }
 
     public post(url: string, config: Partial<RxjsHttpRequestConfig>): Observable<any> {
         const configObject: RequestInit = RequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.POST);
 
-        return fromPromise(fetch(url, configObject)
-            .then((res: Response) => res.json()))
-            .pipe(catchError((err) => throwError(err)));
+        return fromPromise(fetch(url, configObject))
+            .pipe(
+                map((res) => res.json())
+            );
     }
 
     public put(url: string, config: Partial<RxjsHttpRequestConfig>): Observable<any> {
@@ -36,16 +38,18 @@ export class RxJSHttpClient implements IHttp {
     public patch(url: string, config: Partial<RxjsHttpRequestConfig>): Observable<any> {
         const configObject: RequestInit = RequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.PATCH);
 
-        return fromPromise(fetch(url, configObject)
-            .then((res: Response) => res.json()))
-            .pipe(catchError((err) => throwError(err)));
+        return fromPromise(fetch(url, configObject))
+            .pipe(
+                map((res) => res.json())
+            );
     }
 
     public delete(url: string, config: Partial<RxjsHttpRequestConfig>): Observable<any> {
         const configObject: RequestInit = RequestMapper.mapRequestInitFor(config, HttpRequestConfigurationsEnum.DELETE);
 
-        return fromPromise(fetch(url, configObject)
-            .then((res: Response) => res.json()))
-            .pipe(catchError((err) => throwError(err)));
+        return fromPromise(fetch(url, configObject))
+            .pipe(
+                map((res) => res.json())
+            );
     }
 }
