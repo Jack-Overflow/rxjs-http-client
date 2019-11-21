@@ -1,5 +1,4 @@
-export abstract class RxjsHttpRequestConfig {
-    public method: string;
+export abstract class HttpRequestConfig {
     public mode: RequestMode;
     public cache: RequestCache;
     public credentials: RequestCredentials;

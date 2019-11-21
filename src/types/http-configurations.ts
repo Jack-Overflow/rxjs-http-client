@@ -1,64 +1,34 @@
-import {RxjsHttpRequestConfig} from './http-request-config.class';
+import {HttpRequestConfig} from './http-request-config.class';
 
 export class HttpConfigurations {
-    public static httpConfigurationsDictionary: {[configName: string]: Partial<RxjsHttpRequestConfig>} = {
+    public static httpConfigurationsDictionary: { [configName: string]: Partial<HttpRequestConfig> } = {
         POST: {
-            method: 'POST',
-            referrer: 'no-referrer',
-            redirect: 'follow',
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: 'same-origin',
-            mode: 'cors',
-            cache: 'no-cache',
             body: {},
         },
         GET: {
-            method: 'GET',
-            referrer: 'no-referrer',
-            redirect: 'follow',
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: 'same-origin',
-            mode: 'cors',
-            cache: 'no-cache',
         },
         PUT: {
-            method: 'PUT',
-            referrer: 'no-referrer',
-            redirect: 'follow',
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: 'same-origin',
-            mode: 'cors',
-            cache: 'no-cache',
             body: {},
         },
         PATCH: {
-            method: 'PATCH',
-            referrer: 'no-referrer',
-            redirect: 'follow',
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: 'same-origin',
-            mode: 'cors',
-            cache: 'no-cache',
             body: {},
         },
         DELETE: {
-            method: 'DELETE',
-            referrer: 'no-referrer',
-            redirect: 'follow',
             headers: {
                 'Content-Type': 'application/json',
             },
-            credentials: 'same-origin',
-            mode: 'cors',
-            cache: 'no-cache',
             body: {},
         },
     };
