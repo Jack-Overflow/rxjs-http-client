@@ -40,9 +40,9 @@ To get started you are required to create a new instance of the RxJSHttpClient c
 #### get
 The get method provides you with the ability to make a HTTP GET request.
 
-This method has two parameters, the first parameter is the request url and the second optional parameter is the [HTTP config object](#http-config).
+This method has two parameters, the first parameter is the request url and the second optional parameter is the [HTTP config object](#http-config-object).
 
-This method returns an observable container a [HTTP response object](#http-response).
+This method returns an observable container a [HTTP response object](#http-response-object).
 
 Example of basic usage is shown below:
 
@@ -69,9 +69,9 @@ Example of basic usage is shown below:
 #### post
    The get method provides you with the ability to make a HTTP POST request.
    
-   This method has two parameters, the first parameter is the request url and the second parameter is the [HTTP config object](#http-config).
+   This method has two parameters, the first parameter is the request url and the second parameter is the [HTTP config object](#http-config-object).
    
-   This method returns an observable container a [HTTP response object](#http-response).
+   This method returns an observable container a [HTTP response object](#http-response-object).
    
    Example of basic usage is shown below:
    
@@ -104,9 +104,9 @@ Example of basic usage is shown below:
 #### put
 The get method provides you with the ability to make a HTTP PUT request.
 
-This method has two parameters, the first parameter is the request url and the second parameter is the [HTTP config object](#http-config).
+This method has two parameters, the first parameter is the request url and the second parameter is the [HTTP config object](#http-config-object).
 
-This method returns an observable container a [HTTP response object](#http-response).
+This method returns an observable container a [HTTP response object](#http-response-object).
 
 Example of basic usage is shown below:
 
@@ -139,9 +139,9 @@ Example of basic usage is shown below:
 #### patch
 The get method provides you with the ability to make a HTTP PATCH request.
 
-This method has two parameters, the first parameter is the request url and the second parameter is the [HTTP config object](#http-config).
+This method has two parameters, the first parameter is the request url and the second parameter is the [HTTP config object](#http-config-object).
 
-This method returns an observable container a [HTTP response object](#http-response).
+This method returns an observable container a [HTTP response object](#http-response-object).
 
 Example of basic usage is shown below:
 
@@ -174,9 +174,9 @@ Example of basic usage is shown below:
 #### delete
 The get method provides you with the ability to make a HTTP DELETE request.
 
-This method has two parameters, the first parameter is the request url and the second parameter is the [HTTP config object](#http-config).
+This method has two parameters, the first parameter is the request url and the second parameter is the [HTTP config object](#http-config-object).
 
-This method returns an observable container a [HTTP response object](#http-response).
+This method returns an observable container a [HTTP response object](#http-response-object).
 
 Example of basic usage is shown below:
 
