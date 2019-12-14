@@ -1,7 +1,7 @@
 export enum HttpRequestConfigurationsEnum {
     POST = 'POST',
     GET = 'GET',
-    PUT = 'GET',
+    PUT = 'PUT',
     PATCH = 'PATCH',
     DELETE = 'DELETE',
 }

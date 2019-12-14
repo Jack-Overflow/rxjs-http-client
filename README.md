@@ -1,10 +1,9 @@
 # Changes
 
-Version 1.3.1 is the latest stable version.
+Version 1.3.2 is the latest stable version.
 
-Version 1.3.1:
- - Added json(), arrayBuffer(), blob(), text() & formData() methods to response object to return the respective response type
- - Improved response object to include response metadata (see documentation below)
+Version 1.3.2:
+ - Fixed error that would throw whenever trying to make a PUT request
 
 # RxJS-Http-Client
 
