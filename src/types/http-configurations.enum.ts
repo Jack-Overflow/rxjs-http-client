@@ -1,4 +1,4 @@
-export enum HttpRequestConfigurationsEnum {
+export enum HttpRequestConfigurations {
     POST = 'POST',
     GET = 'GET',
     PUT = 'PUT',

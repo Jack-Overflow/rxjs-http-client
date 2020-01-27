@@ -1,9 +1,9 @@
 # Changes
 
-Version 1.3.2 is the latest stable version.
+Version 1.4.0 is the latest stable version.
 
-Version 1.3.2:
- - Fixed error that would throw whenever trying to make a PUT request
+Version 1.4.0:
+ - Added [request interceptors](#request-interceptors)
 
 # RxJS-Http-Client
 
@@ -66,7 +66,7 @@ Example of basic usage is shown below:
 ```
 
 #### post
-   The get method provides you with the ability to make a HTTP POST request.
+   The post method provides you with the ability to make a HTTP POST request.
    
    This method has two parameters, the first parameter is the request url and the second parameter is the [HTTP config object](#http-config-object).
    
@@ -101,7 +101,7 @@ Example of basic usage is shown below:
    ```
 
 #### put
-The get method provides you with the ability to make a HTTP PUT request.
+The put method provides you with the ability to make a HTTP PUT request.
 
 This method has two parameters, the first parameter is the request url and the second parameter is the [HTTP config object](#http-config-object).
 
@@ -136,7 +136,7 @@ Example of basic usage is shown below:
 ```
 
 #### patch
-The get method provides you with the ability to make a HTTP PATCH request.
+The patch method provides you with the ability to make a HTTP PATCH request.
 
 This method has two parameters, the first parameter is the request url and the second parameter is the [HTTP config object](#http-config-object).
 
@@ -171,7 +171,7 @@ Example of basic usage is shown below:
 ```
 
 #### delete
-The get method provides you with the ability to make a HTTP DELETE request.
+The delete method provides you with the ability to make a HTTP DELETE request.
 
 This method has two parameters, the first parameter is the request url and the second parameter is the [HTTP config object](#http-config-object).
 
@@ -232,6 +232,59 @@ The HTTP Response Object is a interface that is returned from all of the HTTP cl
 - formData() - Takes a Response stream and reads it to completion. It returns a Observable that resolves with a [FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) object.
 - json() - Takes a Response stream and reads it to completion. It returns a Observable that resolves with the result of parsing the body text as [JSON](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON).
 - text() - Takes a Response stream and reads it to completion. It returns a Observable that resolves with a [USVString](https://developer.mozilla.org/en-US/docs/Web/API/USVString) (text).
+
+### Request Interceptors
+It is possible to intercept a HTTP request by providing the HTTP client with an array of HTTP interceptors.
+The request interceptors will run in the order they are provided in the array. 
+
+In order for a request interceptor to work correctly it must adhere to the following interface: IHttpInterceptor
+
+####IHttpInterceptor
+The IHttpInterceptor interface is the interface which all HTTP interceptors must adhere to in order to work correctly.
+This interface consists of one method, the intercept method.
+The intercept method has one parameter that is a [HttpRequest](#http-request-object).
+The intercept method must return a HttpRequest.
+
+An example of a http interceptor is shown below:
+```javascript 
+    class ExampleInterceptor {
+        intercept(request) {
+               const newRequest = request.clone();
+               newRequest.headers = {
+                   ...request.headers,
+                   testing: 'example adding a header to the request',
+               };
+               return newRequest;
+           }
+    }
+```
+
+This interceptor is then passed into the RxjsHttpClient constructor as shown below:
+```javascript 
+    class SomeClass {
+        _http;
+            
+        constructor() {
+            this._http = new RxJSHttpClient([
+                new ExampleInterceptor()
+            ]);
+        }
+    }
+```
+After passing interceptors into an instance of an RxjsHttpClient it will be used on all requests from then on but only on that instance.
+
+#### Http Request Object
+The HttpRequest class is the fully mapped request that is passed to [request interceptors](#request-interceptors) for modification if required. It contains the following properties that can all be changed:
+
+- url - The URL for the request
+- mode - Contains the mode of the request (e.g., cors, no-cors, same-origin, navigate.)
+- cache - Contains the cache mode of the request (e.g., default, reload, no-cache).
+- credentials - Contains the credentials of the request (e.g., "omit", "same-origin", "include"). The default is "same-origin".
+- headers - Contains the key value pairs (object) of the request headers (default 'Content-Type' header is 'application/json')
+- redirect - Contains the mode for how redirects are handled. It may be one of follow, error, or manual.
+- referrer - Contains the referrer of the request (e.g., client).
+- body - Contains the request body to send in the request
+
 
 # Issues/Requests
 

@@ -1,20 +1,17 @@
-import {HttpRequestConfigurationsEnum} from '../types/http-configurations.enum';
-import {HttpConfigurations} from '../types/http-configurations';
-import {HttpRequestConfig} from '../types/http-request-config.class';
+import {HttpRequestConfigurations} from '../types/http-configurations.enum';
+import {HttpRequest} from "../types/http-request.class";
 
 export class RequestMapper {
-    public static mapRequestInitFor(httpRequestConfig: Partial<HttpRequestConfig>, method: HttpRequestConfigurationsEnum): RequestInit {
-        const defaultConfig = HttpConfigurations.httpConfigurationsDictionary[method];
-
+    public static for(httpRequestConfig: HttpRequest, method: HttpRequestConfigurations): RequestInit {
         return {
-            cache: httpRequestConfig.cache || defaultConfig.cache,
-            mode: httpRequestConfig.mode || defaultConfig.mode,
-            credentials: httpRequestConfig.credentials || defaultConfig.credentials,
-            headers: httpRequestConfig.headers || defaultConfig.headers,
-            redirect: httpRequestConfig.redirect || defaultConfig.redirect,
-            referrer: httpRequestConfig.referrer || defaultConfig.referrer,
+            cache: httpRequestConfig.cache,
+            mode: httpRequestConfig.mode,
+            credentials: httpRequestConfig.credentials,
+            headers: httpRequestConfig.headers,
+            redirect: httpRequestConfig.redirect,
+            referrer: httpRequestConfig.referrer,
             method: method,
-            body: httpRequestConfig.body ? JSON.stringify(httpRequestConfig.body) : JSON.stringify(defaultConfig.body),
+            body: method !== HttpRequestConfigurations.GET ? JSON.stringify(httpRequestConfig.body) : null
         };
     }
 }
