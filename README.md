@@ -1,8 +1,8 @@
 # Changes
 
-Version 1.4.0 is the latest stable version.
+Version 1.4.1 is the latest stable version.
 
-Version 1.4.0:
+Version 1.4.1:
  - Added [request interceptors](#request-interceptors)
 
 # RxJS-Http-Client
@@ -237,7 +237,7 @@ The HTTP Response Object is a interface that is returned from all of the HTTP cl
 It is possible to intercept a HTTP request by providing the HTTP client with an array of HTTP interceptors.
 The request interceptors will run in the order they are provided in the array. 
 
-In order for a request interceptor to work correctly it must adhere to the following interface: IHttpInterceptor
+In order for a request interceptor to work correctly it must adhere to the following interface: (IHttpInterceptor)[#IHttpInterceptor]
 
 ####IHttpInterceptor
 The IHttpInterceptor interface is the interface which all HTTP interceptors must adhere to in order to work correctly.
