@@ -239,7 +239,7 @@ The request interceptors will run in the order they are provided in the array.
 
 In order for a request interceptor to work correctly it must adhere to the following interface: [IHttpInterceptor](#ihttpinterceptor)
 
-####IHttpInterceptor
+#### IHttpInterceptor
 The IHttpInterceptor interface is the interface which all HTTP interceptors must adhere to in order to work correctly.
 This interface consists of one method, the intercept method.
 The intercept method has one parameter that is a [HttpRequest](#http-request-object).
