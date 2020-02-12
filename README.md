@@ -1,8 +1,8 @@
 # Changes
 
-Version 1.5.0 is the latest stable version.
+Version 1.5.1 is the latest stable version.
 
-Version 1.5.0:
+Version 1.5.1:
  - Added [response interceptors](#response-interceptors)
 
 # RxJS-Http-Client
