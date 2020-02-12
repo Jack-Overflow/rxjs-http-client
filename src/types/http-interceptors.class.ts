@@ -1,18 +1,17 @@
 import {IHttpInterceptor} from "./IHttpInterceptor";
-import {HttpRequest} from "./http-request.class";
 
-export class HttpInterceptors {
-    private readonly _interceptors: Array<IHttpInterceptor>;
+export class HttpInterceptors<T> {
+    private readonly _interceptors: Array<IHttpInterceptor<T>>;
 
-    constructor(interceptors: Array<IHttpInterceptor>) {
+    constructor(interceptors: Array<IHttpInterceptor<T>>) {
         this._interceptors = interceptors;
     }
 
-    public execute(request: HttpRequest): HttpRequest {
+    public execute(data: T): T {
         if (this._interceptors.length > 0) {
-            return this._interceptors.reduce((a, b) => b.intercept(a), request);
+            return this._interceptors.reduce((a, b) => b.intercept(a), data);
         }
 
-        return request;
+        return data;
     }
 }

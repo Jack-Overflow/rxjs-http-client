@@ -1,9 +1,9 @@
 # Changes
 
-Version 1.4.3 is the latest stable version.
+Version 1.5.0 is the latest stable version.
 
-Version 1.4.3:
- - Added [request interceptors](#request-interceptors)
+Version 1.5.0:
+ - Added [response interceptors](#response-interceptors)
 
 # RxJS-Http-Client
 
@@ -234,20 +234,29 @@ The HTTP Response Object is a interface that is returned from all of the HTTP cl
 - text() - Takes a Response stream and reads it to completion. It returns a Observable that resolves with a [USVString](https://developer.mozilla.org/en-US/docs/Web/API/USVString) (text).
 
 ### Request Interceptors
-It is possible to intercept a HTTP request by providing the HTTP client with an array of HTTP interceptors.
+It is possible to intercept a HTTP request by providing the HTTP client with an array of HTTP request interceptors.
 The request interceptors will run in the order they are provided in the array. 
 
-In order for a request interceptor to work correctly it must adhere to the following interface: [IHttpInterceptor](#ihttpinterceptor)
+In order for a request interceptor to work correctly it must adhere to the following interface: [IHttpInterceptor](#ihttpinterceptor).
+
+### Response Interceptors
+It is possible to intercept a HTTP response by providing the HTTP client with an array of HTTP response interceptors.
+The response interceptors will run in the order they are provided in the array. 
+
+In order for a response interceptor to work correctly it must adhere to the following interface: [IHttpInterceptor](#ihttpinterceptor).
+
 
 #### IHttpInterceptor
 The IHttpInterceptor interface is the interface which all HTTP interceptors must adhere to in order to work correctly.
 This interface consists of one method, the intercept method.
-The intercept method has one parameter that is a [HttpRequest](#http-request-object).
-The intercept method must return a HttpRequest.
 
-An example of a http interceptor is shown below:
+The intercept method has one parameter that is a [HttpRequest](#http-request-object) if it is a [request interceptor](#request-interceptors) or a [HttpResponse](#http-response-object) if it is a response interceptor.
+
+The intercept method must return a [HttpRequest](#http-request-object) if it is a [request interceptor](#request-interceptors) or a [HttpResponse](#http-response-object) if it is a response interceptor.
+
+An example of a http request interceptor is shown below:
 ```javascript 
-    class ExampleInterceptor {
+    class ExampleRequestInterceptor {
         intercept(request) {
                const newRequest = request.clone();
                newRequest.headers = {
@@ -259,18 +268,62 @@ An example of a http interceptor is shown below:
     }
 ```
 
-This interceptor is then passed into the RxjsHttpClient constructor as shown below:
+An example of a http response interceptor is shown below:
+```javascript 
+    class ExampleResponseInterceptor {
+        intercept(response) {
+               const newResponse = response.clone();
+               newResponse.status = 404;
+               return newResponse;
+           }
+    }
+```
+
+The first optional parameter of the RxjsHttpClient is an array of request interceptors and the second optional parameter is an array of response interceptors.
+
+An example of a http client with just request interceptors is shown below:
 ```javascript 
     class SomeClass {
         _http;
             
         constructor() {
             this._http = new RxJSHttpClient([
-                new ExampleInterceptor()
+                new ExampleRequestInterceptor()
             ]);
         }
     }
 ```
+
+An example of a http client with request interceptors and response interceptors is shown below:
+```javascript 
+    class SomeClass {
+        _http;
+            
+        constructor() {
+            this._http = new RxJSHttpClient([
+                new ExampleRequestInterceptor()
+            ],
+            [
+                 new ExampleResponseInterceptor()
+            ]);
+        }
+    }
+```
+
+An example of a http client with just response interceptors is shown below:
+```javascript 
+    class SomeClass {
+        _http;
+            
+        constructor() {
+            this._http = new RxJSHttpClient([],
+            [
+                 new ExampleResponseInterceptor()
+            ]);
+        }
+    }
+```
+
 After passing interceptors into an instance of an RxjsHttpClient it will be used on all requests from then on but only on that instance.
 
 #### Http Request Object
