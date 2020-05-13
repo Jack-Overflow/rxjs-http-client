@@ -35,7 +35,7 @@
     "@types/lodash": "^4.14.149",
     "jest": "^24.0.0",
     "rxjs-tslint-rules": "^4.19.1",
-    "ts-jest": "^23.10.5",
+    "ts-jest": "^25.5.1",
     "typescript": "^3.2.4"
   },
   "engines": {
