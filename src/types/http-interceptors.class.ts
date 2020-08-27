@@ -1,4 +1,4 @@
-import {IHttpInterceptor} from "./IHttpInterceptor";
+import {IHttpInterceptor} from "./http-interceptor.interface";
 
 export class HttpInterceptors<T> {
     private readonly _interceptors: Array<IHttpInterceptor<T>>;

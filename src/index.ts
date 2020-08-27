@@ -1,15 +1,15 @@
 import 'whatwg-fetch';
-import {RequestMapper} from './mappers/request.mapper';
-import {Observable} from 'rxjs';
-import {fromPromise} from 'rxjs/internal-compatibility';
-import {map} from "rxjs/operators";
-import {HttpRequestConfig} from "./types/http-request-config.class";
-import {IHttp} from "./types/http.interface";
-import {HttpRequestConfigurations} from "./types/http-configurations.enum";
-import {IHttpInterceptor} from "./types/IHttpInterceptor";
-import {HttpInterceptors} from "./types/http-interceptors.class";
-import {HttpRequest} from "./types/http-request.class";
-import {HttpResponse} from "./types/http-response.class";
+import { RequestMapper } from './mappers/request.mapper';
+import { Observable } from 'rxjs';
+import { fromPromise } from 'rxjs/internal-compatibility';
+import { map, tap } from 'rxjs/operators';
+import { HttpRequestConfig } from './types/http-request-config.class';
+import { IHttp } from './types/http.interface';
+import { HttpRequestConfigurations } from './types/http-configurations.enum';
+import { IHttpInterceptor } from './types/http-interceptor.interface';
+import { HttpInterceptors } from './types/http-interceptors.class';
+import { HttpRequest } from './types/http-request.class';
+import { HttpResponse } from './types/http-response.class';
 
 export class RxJSHttpClient implements IHttp {
     private readonly _requestInterceptors: HttpInterceptors<HttpRequest>;
@@ -18,7 +18,7 @@ export class RxJSHttpClient implements IHttp {
     constructor(requestInterceptors: Array<IHttpInterceptor<HttpRequest>> = [],
                 responseInterceptors: Array<IHttpInterceptor<HttpResponse>> = []) {
         this._requestInterceptors = new HttpInterceptors<HttpRequest>(requestInterceptors);
-        this._responseInterceptors = new HttpInterceptors<HttpResponse>(responseInterceptors)
+        this._responseInterceptors = new HttpInterceptors<HttpResponse>(responseInterceptors);
     }
 
     public get(url: string, config: Partial<HttpRequestConfig> = {}): Observable<HttpResponse> {
@@ -27,6 +27,11 @@ export class RxJSHttpClient implements IHttp {
 
         return fromPromise(fetch(url, configObject))
             .pipe(
+                tap((response) => {
+                    if (!response.ok) {
+                        throw new HttpResponse(response);
+                    }
+                }),
                 map((response) => this._responseInterceptors.execute(new HttpResponse(response)))
             );
     }
@@ -37,6 +42,11 @@ export class RxJSHttpClient implements IHttp {
 
         return fromPromise(fetch(url, configObject))
             .pipe(
+                tap((response) => {
+                    if (!response.ok) {
+                        throw new HttpResponse(response);
+                    }
+                }),
                 map((response) => this._responseInterceptors.execute(new HttpResponse(response)))
             );
     }
@@ -47,6 +57,11 @@ export class RxJSHttpClient implements IHttp {
 
         return fromPromise(fetch(url, configObject))
             .pipe(
+                tap((response) => {
+                    if (!response.ok) {
+                        throw new HttpResponse(response);
+                    }
+                }),
                 map((response) => this._responseInterceptors.execute(new HttpResponse(response)))
             );
     }
@@ -57,6 +72,11 @@ export class RxJSHttpClient implements IHttp {
 
         return fromPromise(fetch(url, configObject))
             .pipe(
+                tap((response) => {
+                    if (!response.ok) {
+                        throw new HttpResponse(response);
+                    }
+                }),
                 map((response) => this._responseInterceptors.execute(new HttpResponse(response)))
             );
     }
@@ -67,6 +87,11 @@ export class RxJSHttpClient implements IHttp {
 
         return fromPromise(fetch(url, configObject))
             .pipe(
+                tap((response) => {
+                    if (!response.ok) {
+                        throw new HttpResponse(response);
+                    }
+                }),
                 map((response) => this._responseInterceptors.execute(new HttpResponse(response)))
             );
     }
