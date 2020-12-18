@@ -10,6 +10,7 @@ import { IHttpInterceptor } from './types/http-interceptor.interface';
 import { HttpInterceptors } from './types/http-interceptors.class';
 import { HttpRequest } from './types/http-request.class';
 import { HttpResponse } from './types/http-response.class';
+import {HttpErrorHandler} from "./helpers/http-error-handler.helper";
 
 export class RxJSHttpClient implements IHttp {
     private readonly _requestInterceptors: HttpInterceptors<HttpRequest>;
@@ -28,11 +29,7 @@ export class RxJSHttpClient implements IHttp {
         return fromPromise(fetch(url, configObject))
             .pipe(
                 map((response) => this._responseInterceptors.execute(new HttpResponse(response))),
-                tap((response) => {
-                    if (!response.ok) {
-                        throw response;
-                    }
-                })
+                tap(HttpErrorHandler.throwIfNotOkResponse)
             );
     }
 
@@ -43,11 +40,7 @@ export class RxJSHttpClient implements IHttp {
         return fromPromise(fetch(url, configObject))
             .pipe(
                 map((response) => this._responseInterceptors.execute(new HttpResponse(response))),
-                tap((response) => {
-                    if (!response.ok) {
-                        throw response;
-                    }
-                })
+                tap(HttpErrorHandler.throwIfNotOkResponse)
             );
     }
 
@@ -58,11 +51,7 @@ export class RxJSHttpClient implements IHttp {
         return fromPromise(fetch(url, configObject))
             .pipe(
                 map((response) => this._responseInterceptors.execute(new HttpResponse(response))),
-                tap((response) => {
-                    if (!response.ok) {
-                        throw response;
-                    }
-                })
+                tap(HttpErrorHandler.throwIfNotOkResponse)
             );
     }
 
@@ -73,11 +62,7 @@ export class RxJSHttpClient implements IHttp {
         return fromPromise(fetch(url, configObject))
             .pipe(
                 map((response) => this._responseInterceptors.execute(new HttpResponse(response))),
-                tap((response) => {
-                    if (!response.ok) {
-                        throw response;
-                    }
-                })
+                tap(HttpErrorHandler.throwIfNotOkResponse)
             );
     }
 
@@ -88,11 +73,7 @@ export class RxJSHttpClient implements IHttp {
         return fromPromise(fetch(url, configObject))
             .pipe(
                 map((response) => this._responseInterceptors.execute(new HttpResponse(response))),
-                tap((response) => {
-                    if (!response.ok) {
-                        throw response;
-                    }
-                })
+                tap(HttpErrorHandler.throwIfNotOkResponse)
             );
     }
 }

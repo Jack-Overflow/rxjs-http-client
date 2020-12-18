@@ -1,13 +1,8 @@
-# Changes
-
-Version 1.5.3 is the latest stable version.
-
-Version 1.5.3:
- - Error is now thrown from a HTTP response if the status code is not "ok" (not in the range 200-299)
-
 # RxJS-Http-Client
 
-A simple to use http client built on ES6 fetch and RxJS
+A simple to use http client built on ES6 fetch and RxJS.
+
+Version 1.5.4 is the latest stable version.
 
 ### Installing RxJS-Http-Client
 
