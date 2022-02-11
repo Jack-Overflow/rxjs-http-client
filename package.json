@@ -1,13 +1,13 @@
 {
   "name": "rxjs-http-client",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "description": "A simple to use http client built on ES6 fetch and RxJS",
   "main": "./dist/index",
   "types": "./dist/index",
   "homepage": "https://github.com/Jack-Overflow/rxjs-http-client",
   "scripts": {
     "build": "tsc && npm run copy",
-    "copy": "cp \"./package.json\" \"./dist\" && cp \"./README.md\" \"./dist\"",
+    "copy": "copy \"./package.json\" \"./dist\" && copy \"./README.md\" \"./dist\"",
     "deploy": "npm run build && npm publish ./dist --access public",
     "test": "jest"
   },
@@ -28,8 +28,8 @@
   "license": "MIT",
   "dependencies": {
     "lodash": "^4.17.21",
-    "node-fetch": "^3.1.0",
-    "rxjs": "^7.5.4"
+    "rxjs": "^7.5.4",
+    "whatwg-fetch": "^3.6.2"
   },
   "peerDependencies": {
     "rxjs": "^7.5.4"

@@ -1,4 +1,4 @@
-import fetch from 'node-fetch';
+import 'whatwg-fetch';
 import { from, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { RequestMapper } from './mappers/request.mapper';
