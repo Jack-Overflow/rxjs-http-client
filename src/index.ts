@@ -1,6 +1,5 @@
 import 'whatwg-fetch';
-import { from, Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { from, Observable ,map } from 'rxjs';
 import { RequestMapper } from './mappers/request.mapper';
 import { checkHttpStatus } from './operators/check-http-status.operator';
 import { HttpRequestConfigurations } from './types/http-configurations.enum';
