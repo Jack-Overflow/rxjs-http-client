@@ -1,14 +1,14 @@
 import 'whatwg-fetch';
-import { from, Observable ,map } from 'rxjs';
-import { RequestMapper } from './mappers/request.mapper';
-import { checkHttpStatus } from './operators/check-http-status.operator';
-import { HttpRequestConfigurations } from './types/http-configurations.enum';
-import { IHttpInterceptor } from './types/http-interceptor.interface';
-import { HttpInterceptors } from './types/http-interceptors.class';
-import { HttpRequestConfig } from './types/http-request-config.class';
-import { HttpRequest } from './types/http-request.class';
-import { HttpResponse } from './types/http-response.class';
-import { IHttp } from './types/http.interface';
+import {from, Observable, map} from 'rxjs';
+import {RequestMapper} from './mappers/request.mapper';
+import {checkHttpStatus} from './operators/check-http-status.operator';
+import {HttpRequestConfigurations} from './types/http-configurations.enum';
+import {IHttpInterceptor} from './types/http-interceptor.interface';
+import {HttpInterceptors} from './types/http-interceptors.class';
+import {HttpRequestConfig} from './types/http-request-config.class';
+import {HttpRequest} from './types/http-request.class';
+import {HttpResponse} from './types/http-response.class';
+import {IHttp} from './types/http.interface';
 
 export class RxJSHttpClient implements IHttp {
     private readonly _reqInterceptors: HttpInterceptors<HttpRequest>;
