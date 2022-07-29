@@ -1,9 +1,9 @@
 {
   "name": "rxjs-http-client",
-  "version": "7.0.5",
+  "version": "7.0.6",
   "description": "A simple to use http client built on ES6 fetch and RxJS",
-  "main": "./dist/index",
-  "types": "./dist/index",
+  "main": "./index.js",
+  "types": "./index.d.ts",
   "homepage": "https://github.com/Jack-Overflow/rxjs-http-client",
   "scripts": {
     "build": "tsc && npm run copy",

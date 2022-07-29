@@ -2,7 +2,7 @@
 
 A simple to use http client built on ES6 fetch and RxJS.
 
-Version 7.0.5 is the latest stable version.
+Version 7.0.6 is the latest stable version.
 
 ### Installing RxJS-Http-Client
 
