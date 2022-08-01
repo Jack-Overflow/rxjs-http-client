@@ -1,6 +1,5 @@
-import { cloneDeep } from 'lodash';
-import { urlRegex } from "../helpers/url.regex";
-import { HttpRequestConfig } from "./http-request-config.class";
+import {urlRegex} from "../helpers/url.regex";
+import {HttpRequestConfig} from "./http-request-config.class";
 
 export class HttpRequest {
     public url: string;
@@ -40,6 +39,14 @@ export class HttpRequest {
     }
 
     public clone(): HttpRequest {
-        return cloneDeep(this);
+        return new HttpRequest(this.url, {
+            body: this.body,
+            cache: this.cache,
+            mode: this.mode,
+            credentials: this.credentials,
+            headers: this.headers,
+            redirect: this.redirect,
+            referrer: this.referrer
+        });
     }
 }

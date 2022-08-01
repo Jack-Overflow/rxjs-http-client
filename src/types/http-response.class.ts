@@ -1,4 +1,3 @@
-import { cloneDeep } from 'lodash';
 import {from, Observable} from 'rxjs';
 
 export class HttpResponse {
@@ -44,6 +43,6 @@ export class HttpResponse {
     }
 
     public clone(): HttpResponse {
-        return cloneDeep(this);
+        return new HttpResponse(this._response.clone())
     }
 }

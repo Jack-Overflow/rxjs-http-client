@@ -1,12 +1,19 @@
 {
   "name": "rxjs-http-client",
-  "version": "7.0.6",
+  "version": "7.0.7",
   "description": "A simple to use http client built on ES6 fetch and RxJS",
-  "main": "./index.js",
+  "main": "./rxjs-http-client.umd.js",
+  "module": "./rxjs-http-client.es.js",
   "types": "./index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./rxjs-http-client.es.js",
+      "require": "./rxjs-http-client.umd.js"
+    }
+  },
   "homepage": "https://github.com/Jack-Overflow/rxjs-http-client",
   "scripts": {
-    "build": "tsc && npm run copy",
+    "build": "vite build && npm run copy",
     "copy": "cp \"./package.json\" \"./dist\" && cp \"./README.md\" \"./dist\"",
     "deploy": "npm run build && npm publish ./dist --access public",
     "test": "jest"
@@ -27,19 +34,17 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "lodash": "^4.17.21",
-    "rxjs": "^7.5.4",
-    "whatwg-fetch": "^3.6.2"
+    "rxjs": "^7.5.6"
   },
   "peerDependencies": {
     "rxjs": "^7.5.6"
   },
   "devDependencies": {
-    "@types/jest": "^28.1.1",
-    "@types/lodash": "^4.14.182",
     "@types/node": "^16.11.10",
     "jest": "^28.1.3",
-    "typescript": "^4.5.2"
+    "typescript": "^4.7.4",
+    "vite": "^3.0.4",
+    "vite-plugin-dts": "^1.4.1"
   },
   "engines": {
     "npm": ">=2.0.0"

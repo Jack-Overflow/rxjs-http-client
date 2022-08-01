@@ -1,21 +1,30 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "outDir": "./dist",
+    "incremental": true,
+    "removeComments": true,
+    "preserveConstEnums": true,
+    "sourceMap": true,
+    "strict": false,
+    "stripInternal": true,
+    "noEmit": true,
     "declarationMap": true,
     "declaration": true,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "target": "es6",
-    "types": [
-      "lodash"
-    ],
+    "module": "AMD",
+    "target": "esnext",
     "lib": [
       "es2017",
       "dom"
     ],
-    "baseUrl": "./dist",
+    "baseUrl": ".",
+    "paths": {
+      "rxjs-http-client": [
+        "./src/index"
+      ]
+    },
     "typeRoots": [
       "index.d.ts"
     ]
