@@ -1,0 +1,44 @@
+name: Build & Test
+
+on: pull_request
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Setup Node
+        uses: actions/setup-node@master
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        run: npm install
+      - name: Lint
+        run: npm run lint
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Setup Node
+        uses: actions/setup-node@master
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@master
+      - name: Setup Node
+        uses: actions/setup-node@master
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        run: npm install
+      - name: Test
+        run: npm run test
