@@ -26,7 +26,10 @@
       ]
     },
     "typeRoots": [
+      "./node_modules/@types",
       "index.d.ts"
     ]
-  }
+  },
+  "exclude": ["node_modules", "**/*.spec.ts", "**/*.test.ts"],
+  "include": ["./src/**/*.tsx", "./src/**/*.ts"]
 }

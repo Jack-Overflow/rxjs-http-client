@@ -1,5 +1,5 @@
-import {urlRegex} from "../helpers/url.regex";
-import {HttpRequestConfig} from "./http-request-config.class";
+import {urlRegex} from '../helpers/url.regex';
+import {HttpRequestConfig} from './http-request-config.class';
 
 export class HttpRequest {
     public url: string;
@@ -28,13 +28,13 @@ export class HttpRequest {
     }
 
     public set headers(headers: { [headerName: string]: string }) {
-        if (headers.hasOwnProperty('Content-Type')) {
+        if (Object.prototype.hasOwnProperty.call(headers, 'Content-Type')) {
             this._headers = headers;
         } else {
             this._headers = {
                 'Content-Type': 'application/json',
                 ...headers
-            }
+            };
         }
     }
 

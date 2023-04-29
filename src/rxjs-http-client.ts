@@ -1,4 +1,4 @@
-import {from, Observable, map} from 'rxjs';
+import {from, map, mergeMap, Observable} from 'rxjs';
 import {RequestMapper} from './mappers/request.mapper';
 import {checkHttpStatus} from './operators/check-http-status.operator';
 import {HttpRequestConfigurations} from './types/http-configurations.enum';
@@ -19,52 +19,77 @@ export class RxJSHttpClient implements IHttp {
     }
 
     public get(url: string, config: Partial<HttpRequestConfig> = {}): Observable<HttpResponse> {
-        const request = this._reqInterceptors.execute(new HttpRequest(url, config));
-        const configObject: RequestInit = RequestMapper.for(request, HttpRequestConfigurations.GET);
-
-        return from(fetch(url, configObject as any)).pipe(
-            map(res => this._resInterceptors.execute(new HttpResponse(res as any))),
-            checkHttpStatus()
-        );
+        return this._reqInterceptors.execute(new HttpRequest(url, config))
+            .pipe(
+                map((request) => RequestMapper.for(request, HttpRequestConfigurations.GET)),
+                mergeMap((configObject) => from(fetch(url, configObject))),
+                map((response) => new HttpResponse(response.body, {
+                    headers: response.headers,
+                    status: response.status,
+                    statusText: response.statusText
+                })),
+                mergeMap((response) => this._resInterceptors.execute(response)),
+                checkHttpStatus()
+            );
     }
 
     public post(url: string, config: Partial<HttpRequestConfig>): Observable<HttpResponse> {
-        const request = this._reqInterceptors.execute(new HttpRequest(url, config));
-        const configObject: RequestInit = RequestMapper.for(request, HttpRequestConfigurations.POST);
-
-        return from(fetch(url, configObject as any)).pipe(
-            map(res => this._resInterceptors.execute(new HttpResponse(res as any))),
-            checkHttpStatus()
-        );
+        return this._reqInterceptors.execute(new HttpRequest(url, config))
+            .pipe(
+                map((request) => RequestMapper.for(request, HttpRequestConfigurations.POST)),
+                mergeMap((configObject) => from(fetch(url, configObject))),
+                map((response) => new HttpResponse(response.body, {
+                    headers: response.headers,
+                    status: response.status,
+                    statusText: response.statusText
+                })),
+                mergeMap((response) => this._resInterceptors.execute(response)),
+                checkHttpStatus()
+            );
     }
 
     public put(url: string, config: Partial<HttpRequestConfig>): Observable<HttpResponse> {
-        const request = this._reqInterceptors.execute(new HttpRequest(url, config));
-        const configObject: RequestInit = RequestMapper.for(request, HttpRequestConfigurations.PUT);
-
-        return from(fetch(url, configObject as any)).pipe(
-            map(res => this._resInterceptors.execute(new HttpResponse(res as any))),
-            checkHttpStatus()
-        );
+        return this._reqInterceptors.execute(new HttpRequest(url, config))
+            .pipe(
+                map((request) => RequestMapper.for(request, HttpRequestConfigurations.PUT)),
+                mergeMap((configObject) => from(fetch(url, configObject))),
+                map((response) => new HttpResponse(response.body, {
+                    headers: response.headers,
+                    status: response.status,
+                    statusText: response.statusText
+                })),
+                mergeMap((response) => this._resInterceptors.execute(response)),
+                checkHttpStatus()
+            );
     }
 
     public patch(url: string, config: Partial<HttpRequestConfig>): Observable<HttpResponse> {
-        const request = this._reqInterceptors.execute(new HttpRequest(url, config));
-        const configObject: RequestInit = RequestMapper.for(request, HttpRequestConfigurations.PATCH);
-
-        return from(fetch(url, configObject as any)).pipe(
-            map(res => this._resInterceptors.execute(new HttpResponse(res as any))),
-            checkHttpStatus()
-        );
+        return this._reqInterceptors.execute(new HttpRequest(url, config))
+            .pipe(
+                map((request) => RequestMapper.for(request, HttpRequestConfigurations.PATCH)),
+                mergeMap((configObject) => from(fetch(url, configObject))),
+                map((response) => new HttpResponse(response.body, {
+                    headers: response.headers,
+                    status: response.status,
+                    statusText: response.statusText
+                })),
+                mergeMap((response) => this._resInterceptors.execute(response)),
+                checkHttpStatus()
+            );
     }
 
     public delete(url: string, config: Partial<HttpRequestConfig>): Observable<HttpResponse> {
-        const request = this._reqInterceptors.execute(new HttpRequest(url, config));
-        const configObject: RequestInit = RequestMapper.for(request, HttpRequestConfigurations.DELETE);
-
-        return from(fetch(url, configObject as any)).pipe(
-            map(res => this._resInterceptors.execute(new HttpResponse(res as any))),
-            checkHttpStatus()
-        );
+        return this._reqInterceptors.execute(new HttpRequest(url, config))
+            .pipe(
+                map((request) => RequestMapper.for(request, HttpRequestConfigurations.DELETE)),
+                mergeMap((configObject) => from(fetch(url, configObject))),
+                map((response) => new HttpResponse(response.body, {
+                    headers: response.headers,
+                    status: response.status,
+                    statusText: response.statusText
+                })),
+                mergeMap((response) => this._resInterceptors.execute(response)),
+                checkHttpStatus()
+            );
     }
 }

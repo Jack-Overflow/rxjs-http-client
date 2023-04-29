@@ -1,4 +1,5 @@
-import { IHttpInterceptor } from "./http-interceptor.interface";
+import {IHttpInterceptor} from './http-interceptor.interface';
+import {from, last, Observable, of, switchScan} from 'rxjs';
 
 export class HttpInterceptors<T> {
     private readonly _interceptors: Array<IHttpInterceptor<T>>;
@@ -7,11 +8,15 @@ export class HttpInterceptors<T> {
         this._interceptors = interceptors;
     }
 
-    public execute(data: T): T {
+    public execute(data: T): Observable<T> {
         if (this._interceptors.length > 0) {
-            return this._interceptors.reduce((a, b) => b.intercept(a), data);
+            return from(this._interceptors)
+                .pipe(
+                    switchScan((a, b) => b.intercept(a), data),
+                    last()
+                );
         }
 
-        return data;
+        return of(data);
     }
 }

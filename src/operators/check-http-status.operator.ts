@@ -5,6 +5,6 @@ export function checkHttpStatus(): OperatorFunction<HttpResponse, HttpResponse> 
     return function (source: Observable<HttpResponse>): Observable<HttpResponse> {
         return source.pipe(
             concatMap(res => res.ok ? of(res) : throwError(() => res))
-        )
-    }
+        );
+    };
 }

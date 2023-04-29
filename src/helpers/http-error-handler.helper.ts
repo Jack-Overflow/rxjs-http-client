@@ -1,4 +1,4 @@
-import {HttpResponse} from "../types/http-response.class";
+import {HttpResponse} from '../types/http-response.class';
 
 export abstract class HttpErrorHandler {
     public static throwIfNotOkResponse(response: HttpResponse): void {

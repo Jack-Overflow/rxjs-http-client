@@ -1,5 +1,5 @@
 import { HttpRequestConfigurations } from '../types/http-configurations.enum';
-import { HttpRequest } from "../types/http-request.class";
+import { HttpRequest } from '../types/http-request.class';
 
 export class RequestMapper {
     public static for(request: HttpRequest, method: HttpRequestConfigurations): RequestInit {
