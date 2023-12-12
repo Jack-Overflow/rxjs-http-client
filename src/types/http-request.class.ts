@@ -1,5 +1,5 @@
-import {urlRegex} from "../helpers/url.regex";
-import {HttpRequestConfig} from "./http-request-config.class";
+import {urlRegex} from '../helpers/url.regex';
+import {HttpRequestConfig} from './http-request-config.class';
 
 export class HttpRequest {
     public url: string;
@@ -34,7 +34,7 @@ export class HttpRequest {
             this._headers = {
                 'Content-Type': 'application/json',
                 ...headers
-            }
+            };
         }
     }
 
