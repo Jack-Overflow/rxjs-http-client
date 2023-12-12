@@ -1,6 +1,6 @@
-import {from, Observable, map} from 'rxjs';
+import {from, map, Observable} from 'rxjs';
 import {RequestMapper} from './mappers/request.mapper';
-import {checkHttpStatus} from './operators/check-http-status.operator';
+import {throwIfNot200Response} from './operators/throw-if-not-200-response.operator';
 import {HttpRequestConfigurations} from './types/http-configurations.enum';
 import {IHttpInterceptor} from './types/http-interceptor.interface';
 import {HttpInterceptors} from './types/http-interceptors.class';
@@ -24,7 +24,7 @@ export class RxJSHttpClient implements IHttp {
 
         return from(fetch(url, configObject as any)).pipe(
             map(res => this._resInterceptors.execute(new HttpResponse(res as any))),
-            checkHttpStatus()
+            throwIfNot200Response()
         );
     }
 
@@ -34,7 +34,7 @@ export class RxJSHttpClient implements IHttp {
 
         return from(fetch(url, configObject as any)).pipe(
             map(res => this._resInterceptors.execute(new HttpResponse(res as any))),
-            checkHttpStatus()
+            throwIfNot200Response()
         );
     }
 
@@ -44,7 +44,7 @@ export class RxJSHttpClient implements IHttp {
 
         return from(fetch(url, configObject as any)).pipe(
             map(res => this._resInterceptors.execute(new HttpResponse(res as any))),
-            checkHttpStatus()
+            throwIfNot200Response()
         );
     }
 
@@ -54,7 +54,7 @@ export class RxJSHttpClient implements IHttp {
 
         return from(fetch(url, configObject as any)).pipe(
             map(res => this._resInterceptors.execute(new HttpResponse(res as any))),
-            checkHttpStatus()
+            throwIfNot200Response()
         );
     }
 
@@ -64,7 +64,7 @@ export class RxJSHttpClient implements IHttp {
 
         return from(fetch(url, configObject as any)).pipe(
             map(res => this._resInterceptors.execute(new HttpResponse(res as any))),
-            checkHttpStatus()
+            throwIfNot200Response()
         );
     }
 }

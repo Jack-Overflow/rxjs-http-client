@@ -43,6 +43,6 @@ export class HttpResponse {
     }
 
     public clone(): HttpResponse {
-        return new HttpResponse(this._response.clone())
+        return new HttpResponse(this._response.clone());
     }
 }
