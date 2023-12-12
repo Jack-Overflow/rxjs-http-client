@@ -14,7 +14,7 @@ describe('throwIfNot200Response', () => {
                         expect(response.status).toEqual(200);
                         done();
                     }
-                })
+                });
         });
     });
 
@@ -29,7 +29,7 @@ describe('throwIfNot200Response', () => {
                         expect(response.status).toEqual(404);
                         done();
                     }
-                })
+                });
         });
     });
 });

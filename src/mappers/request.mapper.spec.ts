@@ -33,7 +33,7 @@ describe('RequestMapper', () => {
               body: JSON.stringify({
                   'test-body': 'test-body-value'
               })
-          })
+          });
       });
    });
 });

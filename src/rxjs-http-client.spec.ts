@@ -9,7 +9,7 @@ describe('RxJSHttpClient', () => {
     });
 
     describe('Given a GET request', () => {
-        let subject = new RxJSHttpClient();
+        const subject = new RxJSHttpClient();
 
         describe('When the HTTP request is executed', () => {
             beforeEach(() => {
@@ -62,7 +62,7 @@ describe('RxJSHttpClient', () => {
 
         describe('When the HTTP response is JSON', () => {
             describe('And the HTTP status code is 200 (successful)', () => {
-                let json: object = {response: 'test'};
+                const json: object = {response: 'test'};
 
                 beforeEach(() => {
                     jest.spyOn(global, 'fetch').mockReturnValueOnce(
@@ -76,7 +76,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -127,7 +127,7 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(json);
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -149,7 +149,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -200,7 +200,7 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(formData);
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -225,7 +225,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -279,9 +279,9 @@ describe('RxJSHttpClient', () => {
                         )
                         .subscribe(([response, blobAsText]) => {
                             expect(response).toEqual(blob);
-                            expect(blobAsText).toEqual('testing blob')
+                            expect(blobAsText).toEqual('testing blob');
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -302,7 +302,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -353,14 +353,14 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(text);
                             done();
-                        })
+                        });
                 });
             });
         });
     });
 
     describe('Given a POST request', () => {
-        let subject = new RxJSHttpClient();
+        const subject = new RxJSHttpClient();
 
         describe('When the HTTP request is executed', () => {
             beforeEach(() => {
@@ -418,7 +418,7 @@ describe('RxJSHttpClient', () => {
 
         describe('When the HTTP response is JSON', () => {
             describe('And the HTTP status code is 200 (successful)', () => {
-                let json: object = {response: 'test'};
+                const json: object = {response: 'test'};
 
                 beforeEach(() => {
                     jest.spyOn(global, 'fetch').mockReturnValueOnce(
@@ -432,7 +432,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -483,7 +483,7 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(json);
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -505,7 +505,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -556,7 +556,7 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(formData);
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -581,7 +581,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -635,9 +635,9 @@ describe('RxJSHttpClient', () => {
                         )
                         .subscribe(([response, blobAsText]) => {
                             expect(response).toEqual(blob);
-                            expect(blobAsText).toEqual('testing blob')
+                            expect(blobAsText).toEqual('testing blob');
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -658,7 +658,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -709,14 +709,14 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(text);
                             done();
-                        })
+                        });
                 });
             });
         });
     });
 
     describe('Given a PUT request', () => {
-        let subject = new RxJSHttpClient();
+        const subject = new RxJSHttpClient();
 
         describe('When the HTTP request is executed', () => {
             beforeEach(() => {
@@ -774,7 +774,7 @@ describe('RxJSHttpClient', () => {
 
         describe('When the HTTP response is JSON', () => {
             describe('And the HTTP status code is 200 (successful)', () => {
-                let json: object = {response: 'test'};
+                const json: object = {response: 'test'};
 
                 beforeEach(() => {
                     jest.spyOn(global, 'fetch').mockReturnValueOnce(
@@ -788,7 +788,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -839,7 +839,7 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(json);
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -861,7 +861,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -912,7 +912,7 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(formData);
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -937,7 +937,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -991,9 +991,9 @@ describe('RxJSHttpClient', () => {
                         )
                         .subscribe(([response, blobAsText]) => {
                             expect(response).toEqual(blob);
-                            expect(blobAsText).toEqual('testing blob')
+                            expect(blobAsText).toEqual('testing blob');
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -1014,7 +1014,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -1065,14 +1065,14 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(text);
                             done();
-                        })
+                        });
                 });
             });
         });
     });
 
     describe('Given a PATCH request', () => {
-        let subject = new RxJSHttpClient();
+        const subject = new RxJSHttpClient();
 
         describe('When the HTTP request is executed', () => {
             beforeEach(() => {
@@ -1130,7 +1130,7 @@ describe('RxJSHttpClient', () => {
 
         describe('When the HTTP response is JSON', () => {
             describe('And the HTTP status code is 200 (successful)', () => {
-                let json: object = {response: 'test'};
+                const json: object = {response: 'test'};
 
                 beforeEach(() => {
                     jest.spyOn(global, 'fetch').mockReturnValueOnce(
@@ -1144,7 +1144,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -1195,7 +1195,7 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(json);
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -1217,7 +1217,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -1268,7 +1268,7 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(formData);
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -1293,7 +1293,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -1347,9 +1347,9 @@ describe('RxJSHttpClient', () => {
                         )
                         .subscribe(([response, blobAsText]) => {
                             expect(response).toEqual(blob);
-                            expect(blobAsText).toEqual('testing blob')
+                            expect(blobAsText).toEqual('testing blob');
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -1370,7 +1370,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -1421,14 +1421,14 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(text);
                             done();
-                        })
+                        });
                 });
             });
         });
     });
 
     describe('Given a DELETE request', () => {
-        let subject = new RxJSHttpClient();
+        const subject = new RxJSHttpClient();
 
         describe('When the HTTP request is executed', () => {
             beforeEach(() => {
@@ -1486,7 +1486,7 @@ describe('RxJSHttpClient', () => {
 
         describe('When the HTTP response is JSON', () => {
             describe('And the HTTP status code is 200 (successful)', () => {
-                let json: object = {response: 'test'};
+                const json: object = {response: 'test'};
 
                 beforeEach(() => {
                     jest.spyOn(global, 'fetch').mockReturnValueOnce(
@@ -1500,7 +1500,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -1551,7 +1551,7 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(json);
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -1573,7 +1573,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -1624,7 +1624,7 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(formData);
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -1649,7 +1649,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -1703,9 +1703,9 @@ describe('RxJSHttpClient', () => {
                         )
                         .subscribe(([response, blobAsText]) => {
                             expect(response).toEqual(blob);
-                            expect(blobAsText).toEqual('testing blob')
+                            expect(blobAsText).toEqual('testing blob');
                             done();
-                        })
+                        });
                 });
             });
         });
@@ -1726,7 +1726,7 @@ describe('RxJSHttpClient', () => {
                                     statusText: 'success'
                                 })
                         )
-                    )
+                    );
                 });
 
                 it('Then the response is a HttpResponse object', (done) => {
@@ -1777,7 +1777,7 @@ describe('RxJSHttpClient', () => {
                         .subscribe((response) => {
                             expect(response).toEqual(text);
                             done();
-                        })
+                        });
                 });
             });
         });
