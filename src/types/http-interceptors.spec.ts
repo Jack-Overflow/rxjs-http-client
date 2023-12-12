@@ -43,89 +43,91 @@ class MockResponseInterceptorTwo implements IHttpInterceptor<HttpResponse> {
     }
 }
 
-describe('Given request with a single HTTP request interceptor', () => {
-    const mockRequest: HttpRequest = new HttpRequest('https://example.com', {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-
-    const subject = new HttpInterceptors([
-        new MockRequestInterceptorOne()
-    ]);
-
-    describe('When executing the interceptors', () => {
-        it('Then the request is correctly modified', () => {
-            const result = subject.execute(mockRequest);
-            expect(result.headers['X-Authentication-Token']).toEqual('fake-auth-token');
-        });
-    });
-});
-
-describe('Given request with multiple HTTP request interceptors', () => {
-    const mockRequest: HttpRequest = new HttpRequest('https://example.com', {
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    });
-
-    const subject = new HttpInterceptors([
-        new MockRequestInterceptorOne(),
-        new MockRequestInterceptorTwo()
-    ]);
-
-    describe('When executing the interceptors', () => {
-        it('Then the request is correctly modified', () => {
-            const result = subject.execute(mockRequest);
-            expect(result.headers['X-Authentication-Token']).toEqual('overwritten-fake-auth-token');
-        });
-    });
-});
-
-describe('Given request with a single HTTP response interceptor', () => {
-    const mockResponse: HttpResponse = new HttpResponse(
-        new Response(JSON.stringify({
-            response: 'mock-response'
-        }), {
+describe('HttpInterceptors', () => {
+    describe('Given request with a single HTTP request interceptor', () => {
+        const mockRequest: HttpRequest = new HttpRequest('https://example.com', {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-    );
+        });
 
-    const subject = new HttpInterceptors([
-        new MockResponseInterceptorOne()
-    ]);
+        const subject = new HttpInterceptors([
+            new MockRequestInterceptorOne()
+        ]);
 
-    describe('When executing the interceptors', () => {
-        it('Then the response is correctly modified', () => {
-            const result = subject.execute(mockResponse);
-            expect(result.headers.get('mock-response-header')).toEqual('mock-response-header-value');
+        describe('When executing the interceptors', () => {
+            it('Then the request is correctly modified', () => {
+                const result = subject.execute(mockRequest);
+                expect(result.headers['X-Authentication-Token']).toEqual('fake-auth-token');
+            });
         });
     });
-});
 
-describe('Given request with multiple HTTP response interceptors', () => {
-    const mockResponse: HttpResponse = new HttpResponse(
-        new Response(JSON.stringify({
-            response: 'mock-response'
-        }), {
+    describe('Given request with multiple HTTP request interceptors', () => {
+        const mockRequest: HttpRequest = new HttpRequest('https://example.com', {
             headers: {
                 'Content-Type': 'application/json'
             }
-        })
-    );
+        });
 
-    const subject = new HttpInterceptors([
-        new MockResponseInterceptorOne(),
-        new MockResponseInterceptorTwo()
-    ]);
+        const subject = new HttpInterceptors([
+            new MockRequestInterceptorOne(),
+            new MockRequestInterceptorTwo()
+        ]);
 
-    describe('When executing the interceptors', () => {
-        it('Then the response is correctly modified', () => {
-            const result = subject.execute(mockResponse);
-            expect(result.status).toEqual(206);
-            expect(result.headers.get('mock-response-header')).toEqual('mock-response-header-value');
+        describe('When executing the interceptors', () => {
+            it('Then the request is correctly modified', () => {
+                const result = subject.execute(mockRequest);
+                expect(result.headers['X-Authentication-Token']).toEqual('overwritten-fake-auth-token');
+            });
+        });
+    });
+
+    describe('Given request with a single HTTP response interceptor', () => {
+        const mockResponse: HttpResponse = new HttpResponse(
+            new Response(JSON.stringify({
+                response: 'mock-response'
+            }), {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        );
+
+        const subject = new HttpInterceptors([
+            new MockResponseInterceptorOne()
+        ]);
+
+        describe('When executing the interceptors', () => {
+            it('Then the response is correctly modified', () => {
+                const result = subject.execute(mockResponse);
+                expect(result.headers.get('mock-response-header')).toEqual('mock-response-header-value');
+            });
+        });
+    });
+
+    describe('Given request with multiple HTTP response interceptors', () => {
+        const mockResponse: HttpResponse = new HttpResponse(
+            new Response(JSON.stringify({
+                response: 'mock-response'
+            }), {
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            })
+        );
+
+        const subject = new HttpInterceptors([
+            new MockResponseInterceptorOne(),
+            new MockResponseInterceptorTwo()
+        ]);
+
+        describe('When executing the interceptors', () => {
+            it('Then the response is correctly modified', () => {
+                const result = subject.execute(mockResponse);
+                expect(result.status).toEqual(206);
+                expect(result.headers.get('mock-response-header')).toEqual('mock-response-header-value');
+            });
         });
     });
 });
