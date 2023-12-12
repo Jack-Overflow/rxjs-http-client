@@ -99,7 +99,7 @@ describe('Given request with a single HTTP response interceptor', () => {
 
     describe('When executing the interceptors', () => {
         it('Then the response is correctly modified', () => {
-            const result = subject.execute(mockResponse)
+            const result = subject.execute(mockResponse);
             expect(result.headers.get('mock-response-header')).toEqual('mock-response-header-value');
         });
     });
@@ -123,7 +123,7 @@ describe('Given request with multiple HTTP response interceptors', () => {
 
     describe('When executing the interceptors', () => {
         it('Then the response is correctly modified', () => {
-            const result = subject.execute(mockResponse)
+            const result = subject.execute(mockResponse);
             expect(result.status).toEqual(206);
             expect(result.headers.get('mock-response-header')).toEqual('mock-response-header-value');
         });
