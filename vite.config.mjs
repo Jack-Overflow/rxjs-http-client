@@ -1,6 +1,7 @@
 import {defineConfig} from 'vite';
 import dts from 'vite-plugin-dts';
 import * as path from 'path';
+import {viteStaticCopy} from 'vite-plugin-static-copy';
 
 export default defineConfig({
     build: {
@@ -19,6 +20,14 @@ export default defineConfig({
         }
     },
     plugins: [
-        dts()
+        dts(),
+        viteStaticCopy({
+            targets: [
+                {
+                    src: 'package.json',
+                    dest: ''
+                }
+            ]
+        })
     ]
 });
