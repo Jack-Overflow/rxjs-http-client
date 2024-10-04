@@ -2,7 +2,7 @@
 
 A simple to use http client built on ES6 fetch and RxJS.
 
-Version 7.0.9 is the latest stable version.
+Version 7.0.10 is the latest stable version.
 
 **As of 7.0.7 the fetch polyfill dependency has been removed. This is to allow support for browsers and node. If you require a fetch polyfill then you must import it into your application yourself.**
 
