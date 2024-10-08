@@ -11,7 +11,19 @@ export class RequestMapper {
             redirect: request.redirect,
             referrer: request.referrer,
             method: method,
-            body: method !== HttpRequestConfigurations.GET ? JSON.stringify(request.body) : null
+            body: this.formatBody(request, method)
         };
+    }
+
+    private static formatBody(request: HttpRequest, method: HttpRequestConfigurations): any {
+        if (method === HttpRequestConfigurations.GET || !request.body) {
+            return null;
+        }
+
+        if (request.body?.constructor === Object) {
+            return JSON.stringify(request.body);
+        }
+
+        return request.body;
     }
 }

@@ -42,10 +42,7 @@ describe('RxJSHttpClient', () => {
                     .subscribe({
                         next: () => {
                             expect(global.fetch).toHaveBeenCalledWith(url, {
-                                headers: {
-                                    ...request.headers,
-                                    'Content-Type': 'application/json',
-                                },
+                                headers: request.headers,
                                 referrer: request.referrer,
                                 cache: request.cache,
                                 mode: request.mode,
@@ -396,10 +393,7 @@ describe('RxJSHttpClient', () => {
                     .subscribe({
                         next: () => {
                             expect(global.fetch).toHaveBeenCalledWith(url, {
-                                headers: {
-                                    ...request.headers,
-                                    'Content-Type': 'application/json',
-                                },
+                                headers: request.headers,
                                 referrer: request.referrer,
                                 cache: request.cache,
                                 mode: request.mode,
@@ -752,10 +746,7 @@ describe('RxJSHttpClient', () => {
                     .subscribe({
                         next: () => {
                             expect(global.fetch).toHaveBeenCalledWith(url, {
-                                headers: {
-                                    ...request.headers,
-                                    'Content-Type': 'application/json',
-                                },
+                                headers: request.headers,
                                 referrer: request.referrer,
                                 cache: request.cache,
                                 mode: request.mode,
@@ -1108,10 +1099,7 @@ describe('RxJSHttpClient', () => {
                     .subscribe({
                         next: () => {
                             expect(global.fetch).toHaveBeenCalledWith(url, {
-                                headers: {
-                                    ...request.headers,
-                                    'Content-Type': 'application/json',
-                                },
+                                headers: request.headers,
                                 referrer: request.referrer,
                                 cache: request.cache,
                                 mode: request.mode,
@@ -1464,10 +1452,7 @@ describe('RxJSHttpClient', () => {
                     .subscribe({
                         next: () => {
                             expect(global.fetch).toHaveBeenCalledWith(url, {
-                                headers: {
-                                    ...request.headers,
-                                    'Content-Type': 'application/json',
-                                },
+                                headers: request.headers,
                                 referrer: request.referrer,
                                 cache: request.cache,
                                 mode: request.mode,
