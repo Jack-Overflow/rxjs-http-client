@@ -2,9 +2,9 @@
 
 A simple to use http client built on ES6 fetch and RxJS.
 
-Version 7.0.9 is the latest stable version.
+Version 8.0.0 is the latest stable version.
 
-**As of 7.0.7 the fetch polyfill dependency has been removed. This is to allow support for browsers and node. If you require a fetch polyfill then you must import it into your application yourself.**
+**As of version 8.0.0, support for non-JSON bodies has been added. This means that the request 'Content-Type' header no longer defaults to the value 'application/json', which means you will need to provide this header in the request config for each request with a JSON body or in a RequestInterceptor.**
 
 ### Installing RxJS-Http-Client
 
@@ -83,6 +83,9 @@ Example of basic usage is shown below:
                const request = {
                    body: {
                        some: 'data'
+                   }, 
+                   headers: {
+                       'Content-Type': 'application/json'
                    }
                }
                
@@ -118,6 +121,9 @@ Example of basic usage is shown below:
             const request = {
                 body: {
                     some: 'data'
+                },
+                headers: {
+                    'Content-Type': 'application/json'
                 }
             }
             
@@ -153,6 +159,9 @@ Example of basic usage is shown below:
             const request = {
                 body: {
                     some: 'data'
+                },
+                headers: {
+                    'Content-Type': 'application/json'
                 }
             }
             
@@ -188,6 +197,9 @@ Example of basic usage is shown below:
             const request = {
                 body: {
                     some: 'data'
+                },
+                headers: {
+                    'Content-Type': 'application/json'
                 }
             }
             
